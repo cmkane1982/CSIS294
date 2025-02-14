@@ -1,6 +1,7 @@
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class Util
@@ -9,9 +10,9 @@ public class Util
     private MerkleNode oLeft;
     private MerkleNode oRight;
 
-    public void getMerkleRoot()
+    public String getMerkleRoot(ArrayList<String> wordList)
     {
-
+        return "";
     }
 
     private void populateMerkleNode()
@@ -41,9 +42,10 @@ public class Util
 
     public String promptUser(String uQuestion)
     {
+        String sAnswer;
         JOptionPane oQuestion = new JOptionPane();
 
-        String sAnswer = oQuestion.showInputDialog(uQuestion);
+        sAnswer = oQuestion.showInputDialog(uQuestion);
 
         return sAnswer;
     }
