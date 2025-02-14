@@ -6,6 +6,8 @@ public class RogueThread implements Runnable
     {
         Util util = new Util();
 
+        System.out.println(threadName + " running.");
+
         while(true)
         {
             String newWord;

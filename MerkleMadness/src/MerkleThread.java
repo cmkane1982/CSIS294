@@ -9,7 +9,9 @@ public class MerkleThread implements Runnable
     public void run()
     {
         Util util = new Util();
-        ArrayList<String> wordList = new ArrayList<>();
+        lstWords = new ArrayList<>();
+
+        System.out.println(threadName + " running.");
 
         while(true)
         {
@@ -25,7 +27,7 @@ public class MerkleThread implements Runnable
                 lstWords.add(newWord);
                 if(lstWords.size() == iMerkleTreeInputs)
                 {
-                    MerkleManager.userMerkleRoot = util.getMerkleRoot(wordList);
+                    MerkleManager.userMerkleRoot = util.getMerkleRoot(lstWords);
                 }
             }
         }

@@ -6,6 +6,8 @@ public class MonitorThread implements Runnable
     {
         Util util = new Util();
 
+        System.out.println(threadName + " running.");
+
         while(true)
         {
             if(MerkleManager.userMerkleRoot != null)

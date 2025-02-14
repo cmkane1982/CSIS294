@@ -61,6 +61,13 @@ public class Util
 
     public void sleep(int sleepTime)
     {
+        try
+        {
+            Thread.sleep(sleepTime * 1000);
+        }
+        catch(Exception ex)
+        {
 
+        }
     }
 }

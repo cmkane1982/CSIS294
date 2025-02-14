@@ -9,7 +9,7 @@ public class MerkleManager
     {
         Util util = new Util();
 
-        expectedMerkleRoot = util.promptUser("Enter expected Merkle Root");
+        expectedMerkleRoot = util.promptUser("Enter expected Merkle Root (Use: https://codebeautify.org/sha256-hash-generator)");
 
         MerkleThread merThread = new MerkleThread();
         RogueThread rogThread = new RogueThread();
@@ -26,6 +26,8 @@ public class MerkleManager
         tMerkThread.start();
         tRogThread.start();
         tMonThread.start();
+
+        System.out.println("Strikes: " + strikes);
 
         while(true)
         {
