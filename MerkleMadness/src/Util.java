@@ -12,12 +12,33 @@ public class Util
 
     public String getMerkleRoot(ArrayList<String> wordList)
     {
-        return "";
+        MerkleNode finalNode = new MerkleNode();
+        ArrayList<MerkleNode> mNodeList = new ArrayList<>();
+
+        for(int i = 0; i < wordList.size(); i++)
+        {
+            mNodeList.add(new MerkleNode());
+            mNodeList.get(i).sHash = generateHash(wordList.get(i));
+        }
+
+        for(int i = 0; i < wordList.size(); i += 2)
+        {
+            MerkleNode mNode = new MerkleNode();
+
+            populateMerkleNode(mNode, mNodeList.get(i), mNodeList.get(i + 1));
+            mNodeList.add(mNode);
+        }
+
+        populateMerkleNode(finalNode, mNodeList.get(mNodeList.size() - 2), mNodeList.get(mNodeList.size() - 1));
+
+        return finalNode.sHash;
     }
 
-    private void populateMerkleNode()
+    private void populateMerkleNode(MerkleNode oNode, MerkleNode oLeftNode, MerkleNode oRightNode)
     {
-
+        oNode.oLeft = oLeftNode;
+        oNode.oRight = oRightNode;
+        oNode.sHash = generateHash(oNode.oLeft.sHash + oNode.oRight.sHash);
     }
 
     public synchronized String generateHash(String sOriginal)
