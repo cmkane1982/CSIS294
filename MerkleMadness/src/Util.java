@@ -1,6 +1,7 @@
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
+import javax.swing.JOptionPane;
 
 public class Util
 {
@@ -40,13 +41,18 @@ public class Util
 
     public String promptUser(String uQuestion)
     {
-        return "";
+        JOptionPane oQuestion = new JOptionPane();
+
+        String sAnswer = oQuestion.showInputDialog(uQuestion);
+
+        return sAnswer;
     }
 
     public void sleepRandomTime(String sThreadName)
     {
-    // Gets random number between 0 and 5 and then adds 3, meaning between and 8 now.
+        // Gets random number between 0 and 5 and then adds 3, meaning between and 8 now.
         int iSleepTime = new SecureRandom().nextInt(5) + 3;
+
         System.out.println(sThreadName + " sleeping for " + iSleepTime + " seconds.");
         sleep(iSleepTime);
     }

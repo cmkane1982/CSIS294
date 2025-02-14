@@ -9,7 +9,7 @@ public class MerkleManager
     {
         Util util = new Util();
 
-
+        String ans = util.promptUser("Test");
     }
 
     public static synchronized String grabWord()
