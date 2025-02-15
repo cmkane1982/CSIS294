@@ -21,6 +21,7 @@ public class RogueThread implements Runnable
                 MerkleManager.strikes++;
 
                 System.out.println("STRIKE!");
+                System.out.println("Strikes: " + MerkleManager.strikes);
             }
         }
     }
