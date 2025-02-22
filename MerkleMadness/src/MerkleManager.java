@@ -5,6 +5,13 @@ public class MerkleManager
     public static String userMerkleRoot = null;
     public static int strikes = 0;
 
+    /*
+        PURPOSE: Create and start all threads needed for
+                 game functionality. While game is running,
+                 grabs new words from user.
+        INPUT: N/A
+        OUTPUT: N/A
+     */
     public void manage()
     {
         Util util = new Util();
@@ -35,6 +42,12 @@ public class MerkleManager
         }
     }
 
+    /*
+        PURPOSE: Put instance variable of user's word into
+                 temp variable and nullifies instance variable
+        INPUT: N/A
+        OUTPUT: String of temp variable
+     */
     public static synchronized String grabWord()
     {
         String tempWord;

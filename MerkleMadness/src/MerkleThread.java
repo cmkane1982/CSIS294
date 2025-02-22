@@ -6,6 +6,11 @@ public class MerkleThread implements Runnable
     public static volatile ArrayList<String> lstWords;
     private static final int iMerkleTreeInputs = 4;
 
+    /*
+        PURPOSE: Starts MerkleThread. Grabs new words while running.
+        INPUT: N/A
+        OUTPUT: N/A
+     */
     public void run()
     {
         Util util = new Util();
@@ -24,6 +29,7 @@ public class MerkleThread implements Runnable
             if(newWord != null)
             {
                 System.out.println("Merkle Word Grabbed!");
+                System.out.println("Word: " + newWord);
                 lstWords.add(newWord);
                 if(lstWords.size() == iMerkleTreeInputs)
                 {

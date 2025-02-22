@@ -1,6 +1,9 @@
 /*
     GROUP MEMBERS:
         Craig Kane
+        Marwah Al Tameemi
+        Matthew Sherrills
+        Rohanna Panopio
 
     SAMPLE DATA:
     WORD: word1

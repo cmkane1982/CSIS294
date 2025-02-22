@@ -1,28 +1,22 @@
-public class RogueThread implements Runnable
-{
+public class RogueThread implements Runnable{
+
     public String threadName;
 
-    public void run()
-    {
+    @Override
+    public void run() {
         Util util = new Util();
 
-        System.out.println(threadName + " running.");
-
-        while(true)
-        {
-            String newWord;
-
+        while(true) {
             util.sleepRandomTime(threadName);
+            String sNewWord = MerkleManager.grabWord();
 
-            newWord = MerkleManager.grabWord();
-
-            if(newWord != null)
-            {
+            if (sNewWord != null) {
                 MerkleManager.strikes++;
 
                 System.out.println("STRIKE!");
                 System.out.println("Strikes: " + MerkleManager.strikes);
             }
+
         }
     }
 }
