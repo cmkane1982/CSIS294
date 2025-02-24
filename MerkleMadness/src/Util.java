@@ -5,20 +5,26 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class Util {
+
     public String getMerkleRoot(ArrayList<String> wordList) {
+
         MerkleNode finalNode = new MerkleNode();
+
         ArrayList<MerkleNode> mNodeList = new ArrayList<>();
 
-        // hashes the inputted words into a list
         for(int i = 0; i < wordList.size(); i++) {
+
             mNodeList.add(new MerkleNode());
+
             mNodeList.get(i).sHash = generateHash(wordList.get(i));
         }
-        // creates the root of the merkle code by combining adjacent nodes together
+
         for(int i = 0; i < wordList.size(); i += 2) {
+
             MerkleNode mNode = new MerkleNode();
 
             populateMerkleNode(mNode, mNodeList.get(i), mNodeList.get(i + 1));
+
             mNodeList.add(mNode);
         }
 
@@ -26,8 +32,8 @@ public class Util {
 
         return finalNode.sHash;
     }
-    // builds part of the merkle tree
     private void populateMerkleNode(MerkleNode oNode, MerkleNode oLeftNode, MerkleNode oRightNode) {
+
         oNode.oLeft = oLeftNode;
         oNode.oRight = oRightNode;
         oNode.sHash = generateHash(oNode.oLeft.sHash + oNode.oRight.sHash);
@@ -35,29 +41,34 @@ public class Util {
 
     public synchronized String generateHash(String sOriginal) {
         try {
+
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] btEncodedhash = digest.digest(sOriginal.getBytes(StandardCharsets.UTF_8));
+            byte[] Encodedhash = digest.digest(sOriginal.getBytes(StandardCharsets.UTF_8));
             StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < btEncodedhash.length; i++) {
-                sb.append(Integer.toString((btEncodedhash[i] & 0xff) + 0x100, 16).substring(1));
+            for (byte encodedhash : Encodedhash) {
+                sb.append(Integer.toString((encodedhash & 0xff) + 0x100, 16).substring(1));
+
             }
             return sb.toString();
         }
         catch (Exception ex) {
-            System.out.println("Error generating hash: " + ex.getMessage());
+
+            System.out.println("Error generating hash:" + ex.getMessage());
+
             return null;
         }
     }
-    // pop-up dialogue asking for a word
     public String promptUser(String uQuestion) {
+
         String sAnswer;
         sAnswer = JOptionPane.showInputDialog(uQuestion);
         return sAnswer;
     }
 
     public void sleepRandomTime(String sThreadName) {
-        // gets a random number between 0 and 5 then adds 3, meaning a number between 3 and 8 now
+
         int iSleepTime = new SecureRandom().nextInt(5) + 3;
+
         System.out.println(sThreadName + " sleeping for " + iSleepTime + " seconds.");
         try {
             sleep(iSleepTime);
@@ -72,3 +83,5 @@ public class Util {
     }
 
 }
+
+
